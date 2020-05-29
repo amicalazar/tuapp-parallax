@@ -9,8 +9,6 @@ import MessengerLogo from './assets/messenger-logo.svg'
 import GmailLogo from './assets/gmail-logo.svg'
 import WhatsappLogo from './assets/whatsapp-logo.svg'
 
-//Responsive
-const isLaptopOrMobile = useMediaQuery({ query: '(max-width: 792px)' })
 
 // Little helpers ...
 const url = (name, wrap = false) => `${wrap ? 'url(' : ''}https://awv3node-homepage.surge.sh/build/assets/${name}.svg${wrap ? ')' : ''}`
@@ -23,7 +21,13 @@ const Blue = ({ children }) => <span style={{ color: '#57C7FF' }}>{children}</sp
 const Gray = ({ children }) => <span style={{ color: '#909090' }}>{children}</span>
 
 class App extends React.Component {
+
+  
   render() {
+
+    //Responsive
+    const isLaptopOrMobile = useMediaQuery({ query: '(max-width: 792px)' })
+
     return (
       <Parallax ref={ref => (this.parallax = ref)} pages={3}>
         <ParallaxLayer offset={1} speed={1} style={{ backgroundColor: '#805E73' }} />
