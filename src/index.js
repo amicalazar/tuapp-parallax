@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { useMediaQuery } from 'react-responsive'
+import MediaQuery from 'react-responsive'
 import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
 import LOGO2 from './assets/LOGO2.svg'
 import BASH2 from './assets/bash2.svg'
@@ -26,7 +26,7 @@ class App extends React.Component {
   render() {
 
     //Responsive
-    const isLaptopOrMobile = useMediaQuery({ query: '(max-width: 792px)' })
+    //const isLaptopOrMobile = useMediaQuery({ query: '(max-width: 792px)' })
 
     return (
       <Parallax ref={ref => (this.parallax = ref)} pages={3}>
@@ -102,7 +102,15 @@ class App extends React.Component {
           speed={-0}
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           onClick={() => this.parallax.scrollTo(0)}>
-          <img src={CLIENTS2} style={isLaptopOrMobile ? { width: '100%' } : { width: '40%' }}/>
+
+        <MediaQuery minDeviceWidth={1400}>
+            {/* You can also use a function (render prop) as a child */}
+            {(matches) =>
+              matches
+                ? <img src={CLIENTS2} style={{ width: '40%' }}/>
+                : <img src={CLIENTS2} style={{ width: '100%' }}/>
+            }
+        </MediaQuery>     
         </ParallaxLayer>
 
         <ParallaxLayer
