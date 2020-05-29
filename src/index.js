@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import MediaQuery from 'react-responsive'
 import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
 import LOGO2 from './assets/LOGO2.svg'
 import BASH2 from './assets/bash2.svg'
-import CLIENTS2 from './assets/clients-main2.svg'
-import MessengerLogo from './assets/messenger-logo.svg'
-import GmailLogo from './assets/gmail-logo.svg'
-import WhatsappLogo from './assets/whatsapp-logo.svg'
+import ClientsMessenger from './assets/clients-main-messenger.svg'
+
 
 
 // Little helpers ...
@@ -70,8 +68,8 @@ class App extends React.Component {
         </ParallaxLayer>
 
         <ParallaxLayer
-          offset={2}
-          speed={-0.3}
+          offset={2.2}
+          speed={0.4}
           style={{
             backgroundSize: '80%',
             backgroundPosition: 'center',
@@ -97,33 +95,25 @@ class App extends React.Component {
           <img src={BASH2} style={{ width: '40%' }} />
         </ParallaxLayer>
 
+
+            
         <ParallaxLayer
-          offset={2}
+          offset={1.8}
           speed={-0}
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           onClick={() => this.parallax.scrollTo(0)}>
 
-        <MediaQuery minDeviceWidth={1400}>
+        <MediaQuery minDeviceWidth={1200}>
             {/* You can also use a function (render prop) as a child */}
             {(matches) =>
               matches
-                ? <img src={CLIENTS2} style={{ width: '40%' }}/>
-                : <img src={CLIENTS2} style={{ width: '100%' }}/>
+                ? <img src={ClientsMessenger} style={{ width: '40%' }}/>
+                : <img src={ClientsMessenger} style={{ width: '80%' }}/>
             }
         </MediaQuery>     
         </ParallaxLayer>
 
-        <ParallaxLayer
-          offset={2}
-          speed={-0}
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          >
-            <img onClick={() => this.parallax.scrollTo(1)} src={MessengerLogo} style={{ display: 'block', width: '4%', marginRight: '5%', marginTop: '5%' }}/>
-            <img onClick={() => this.parallax.scrollTo(0)} src={GmailLogo} style={{ display: 'block', width: '4%', marginRight: '5%', marginTop: '5%' }}/>
-            <img onClick={() => this.parallax.scrollTo(1)} src={WhatsappLogo} style={{ display: 'block', width: '4%', marginRight: '10%', marginTop: '5%' }}/>
-          
-        </ParallaxLayer>
-
+    
 
       </Parallax>
     )
