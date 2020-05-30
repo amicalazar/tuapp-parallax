@@ -30,9 +30,10 @@ class App extends React.Component {
     //const isLaptopOrMobile = useMediaQuery({ query: '(max-width: 792px)' })
 
     return (
-      <Parallax ref={ref => (this.parallax = ref)} pages={3}>
+      
+      <Parallax ref={ref => (this.parallax = ref)} pages={3} >
         <ParallaxLayer offset={1} speed={1} style={{ backgroundColor: '#805E73' }} />
-        <ParallaxLayer offset={2} speed={1} style={{ backgroundColor: '#87BCDE' }} />
+        <ParallaxLayer offset={2} speed={1} style={{ backgroundColor: '#87BCDE' }} onClick={() => this.parallax.scrollTo(1)}/>
 
         <ParallaxLayer offset={0} speed={0} factor={3} style={{ backgroundImage: url('stars', true), backgroundSize: 'cover' }} />
 
@@ -113,8 +114,8 @@ class App extends React.Component {
         <ParallaxLayer
           offset={1.9}
           speed={-0}
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          onClick={() => this.parallax.scrollTo(0)}>
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', cursor:'pointer'}}
+          onClick={() => this.parallax.scrollTo()}>
 
         <MediaQuery minDeviceWidth={1200}>
             {/* You can also use a function (render prop) as a child */}
@@ -129,9 +130,7 @@ class App extends React.Component {
         <ParallaxLayer
           offset={2.2}
           speed={0.9}
-          style={{ display: 'flex', alignItems: 'left', justifyContent: 'left' }}
-          onClick={() => this.parallax.scrollTo(0)}>
-
+          style={{ display: 'flex', alignItems: 'left', justifyContent: 'left' }}>
         <MediaQuery minDeviceWidth={1200}>
             {/* You can also use a function (render prop) as a child */}
             {(matches) =>
@@ -139,14 +138,13 @@ class App extends React.Component {
                 ? <img src={logoLooking} style={{ width: '20%', height: '60%', marginLeft: '70%' }}/>
                 : <img src={logoLooking} style={{ width: '40%', height: '80%', marginLeft: '70%'}}/>
             }
-        </MediaQuery>     
+        </MediaQuery>    
         </ParallaxLayer>
 
         <ParallaxLayer
           offset={2.2}
           speed={0.9}
-          style={{ display: 'flex', alignItems: 'right', justifyContent: 'right' }}
-          onClick={() => this.parallax.scrollTo(0)}>
+          style={{ display: 'flex', alignItems: 'right', justifyContent: 'right' }}>
 
         <MediaQuery minDeviceWidth={1200}>
             {/* You can also use a function (render prop) as a child */}
@@ -156,6 +154,19 @@ class App extends React.Component {
                 : <img src={cursor} style={{ width: '20%', marginLeft:'40%'}}/>
             }
         </MediaQuery>     
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          offset={3}
+          speed={-1}
+          style={{ display: 'flex', alignItems: 'right', justifyContent: 'right', cursor:'pointer' }}
+          onClick={() => window.location.href='m.me/114241380306917'}>
+          <div class="fb-messengermessageus" 
+            messenger_app_id="<APP_ID>" 
+            page_id="<PAGE_ID>"
+            color="<blue | white>"
+            size="<standard | large | xlarge>">
+          </div>
         </ParallaxLayer>
 
         
