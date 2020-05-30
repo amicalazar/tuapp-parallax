@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom'
 import MediaQuery from 'react-responsive'
 import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
 import logo from './assets/logo.png'
+import rocket from './assets/rocket.svg'
+import logoLooking from './assets/logo-looking.png'
+import cursor from './assets/cursor.svg'
 import BASH2 from './assets/bash2.svg'
 import ClientsMessenger from './assets/clients-main-messenger.svg'
 
@@ -32,6 +35,10 @@ class App extends React.Component {
         <ParallaxLayer offset={2} speed={1} style={{ backgroundColor: '#87BCDE' }} />
 
         <ParallaxLayer offset={0} speed={0} factor={3} style={{ backgroundImage: url('stars', true), backgroundSize: 'cover' }} />
+
+        <ParallaxLayer offset={1.3} speed={-0.3} style={{ pointerEvents: 'none' }}>
+          <img src={url('satellite4')} style={{ width: '15%', marginLeft: '70%' }} />
+        </ParallaxLayer>
 
         <ParallaxLayer offset={1.3} speed={-0.3} style={{ pointerEvents: 'none' }}>
           <img src={url('satellite4')} style={{ width: '15%', marginLeft: '70%' }} />
@@ -67,15 +74,7 @@ class App extends React.Component {
           <img src={url('earth')} style={{ width: '60%' }} />
         </ParallaxLayer>
 
-        <ParallaxLayer
-          offset={2.2}
-          speed={0.4}
-          style={{
-            backgroundSize: '80%',
-            backgroundPosition: 'center',
-            backgroundImage: url('clients', true)
-          }}
-        />
+        
 
         <ParallaxLayer
           offset={0}
@@ -95,10 +94,24 @@ class App extends React.Component {
           <img src={BASH2} style={{ width: '40%' }} />
         </ParallaxLayer>
 
+        <ParallaxLayer
+          offset={1.2}
+          speed={1.5}
+          style={{ display: 'flex', alignItems: 'left', justifyContent: 'left' }}
+          >
 
+        <MediaQuery minDeviceWidth={1200}>
+            {/* You can also use a function (render prop) as a child */}
+            {(matches) =>
+              matches
+                ? <img src={rocket} style={{ width: '20%', height: '60%', marginLeft: '5%' }}/>
+                : <img src={rocket} style={{ width: '40%', height: '80%', marginLeft: '5%'}}/>
+            }
+        </MediaQuery>     
+        </ParallaxLayer>
             
         <ParallaxLayer
-          offset={1.8}
+          offset={1.9}
           speed={-0}
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           onClick={() => this.parallax.scrollTo(0)}>
@@ -107,11 +120,45 @@ class App extends React.Component {
             {/* You can also use a function (render prop) as a child */}
             {(matches) =>
               matches
-                ? <img src={ClientsMessenger} style={{ width: '40%' }}/>
-                : <img src={ClientsMessenger} style={{ width: '80%' }}/>
+                ? <img src={ClientsMessenger} style={{ width: '40%', marginRight: '20%' }}/>
+                : <img src={ClientsMessenger} style={{ width: '80%', marginRight: '20%' }}/>
             }
         </MediaQuery>     
         </ParallaxLayer>
+
+        <ParallaxLayer
+          offset={2.2}
+          speed={0.9}
+          style={{ display: 'flex', alignItems: 'left', justifyContent: 'left' }}
+          onClick={() => this.parallax.scrollTo(0)}>
+
+        <MediaQuery minDeviceWidth={1200}>
+            {/* You can also use a function (render prop) as a child */}
+            {(matches) =>
+              matches
+                ? <img src={logoLooking} style={{ width: '20%', height: '60%', marginLeft: '70%' }}/>
+                : <img src={logoLooking} style={{ width: '40%', height: '80%', marginLeft: '70%'}}/>
+            }
+        </MediaQuery>     
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          offset={2.2}
+          speed={0.9}
+          style={{ display: 'flex', alignItems: 'right', justifyContent: 'right' }}
+          onClick={() => this.parallax.scrollTo(0)}>
+
+        <MediaQuery minDeviceWidth={1200}>
+            {/* You can also use a function (render prop) as a child */}
+            {(matches) =>
+              matches
+                ? <img src={cursor} style={{ width: '10%', marginLeft:'40%'}}/>
+                : <img src={cursor} style={{ width: '20%', marginLeft:'40%'}}/>
+            }
+        </MediaQuery>     
+        </ParallaxLayer>
+
+        
 
     
 
