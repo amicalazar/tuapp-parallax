@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import MediaQuery from 'react-responsive'
 import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
-import LOGO2 from './assets/LOGO2.svg'
+import logo from './assets/logo.png'
 import BASH2 from './assets/bash2.svg'
 import ClientsMessenger from './assets/clients-main-messenger.svg'
 
@@ -82,7 +82,7 @@ class App extends React.Component {
           speed={0.1}
           onClick={() => this.parallax.scrollTo(1)}
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src={LOGO2} style={{ width: '40%' }}/>
+          <img src={logo} style={{ width: '70%' }}/>
         </ParallaxLayer>
         
 
