@@ -2,15 +2,17 @@ import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import MediaQuery from 'react-responsive'
 import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
+import { useSpring, animated } from 'react-spring'
 import logo from './assets/logo.png'
 import rocket from './assets/rocket.svg'
 import logoLooking from './assets/logo-looking.png'
 import cursor from './assets/cursor.svg'
 import BASH2 from './assets/bash2.svg'
 import ClientsMessenger from './assets/clients-main-messenger.svg'
-import desktop from './assets/desktop.svg'
-import smartphone from './assets/smartphone.svg'
-import plan from './assets/plan.svg'
+import signSmartphone from './assets/sign-smartphone.svg'
+import signDesktop from './assets/sign-desktop.svg'
+import signPlan from './assets/sign-plan.svg'
+import illimani from './assets/illimani2.svg'
 
 
 
@@ -24,6 +26,11 @@ const Green = ({ children }) => <span style={{ color: '#57EE89' }}>{children}</s
 const Blue = ({ children }) => <span style={{ color: '#57C7FF' }}>{children}</span>
 const Gray = ({ children }) => <span style={{ color: '#909090' }}>{children}</span>
 
+
+//Vertical
+const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2]
+const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`
+
 class App extends React.Component {
 
   
@@ -34,20 +41,16 @@ class App extends React.Component {
 
     return (
       
-      <Parallax ref={ref => (this.parallax = ref)} pages={4} >
+      <Parallax ref={ref => (this.parallax = ref)} pages={3} >
         <ParallaxLayer offset={1} speed={1} factor={2} style={{ backgroundColor: '#805E73' }} />
         <ParallaxLayer offset={2} speed={1} factor={2} style={{ backgroundColor: '#87BCDE' }}/>
-        <ParallaxLayer offset={3} speed={1} style={{ backgroundColor: '#87BCDE' }}/>
 
-        <ParallaxLayer offset={0} speed={0} factor={4} style={{ backgroundImage: url('stars', true), backgroundSize: 'cover' }} />
-
-        <ParallaxLayer offset={1.3} speed={-0.3} style={{ pointerEvents: 'none' }}>
-          <img src={url('satellite4')} style={{ width: '15%', marginLeft: '70%' }} />
-        </ParallaxLayer>
+        <ParallaxLayer offset={0} speed={0} factor={3} style={{ backgroundImage: url('stars', true), backgroundSize: 'cover' }} />
 
         <ParallaxLayer offset={1.3} speed={-0.3} style={{ pointerEvents: 'none' }}>
-          <img src={url('satellite4')} style={{ width: '15%', marginLeft: '70%' }} />
+          <img src={url('satellite4')} style={{ width: '30%', marginLeft: '60%' }} />
         </ParallaxLayer>
+
 
         <ParallaxLayer offset={1} speed={0.8} style={{ opacity: 0.1 }}>
           <img src={url('cloud')} style={{ display: 'block', width: '20%', marginLeft: '55%' }} />
@@ -77,8 +80,8 @@ class App extends React.Component {
 
 
         //Earth
-        <ParallaxLayer offset={3.5} speed={-0.4} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
-          <img src={url('earth')} style={{ width: '60%' }} />
+        <ParallaxLayer offset={2.4} speed={-0.4} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
+          <img src={illimani} style={{ width: '200%' }} />
         </ParallaxLayer>
 
         
@@ -112,13 +115,30 @@ class App extends React.Component {
             {(matches) =>
               matches
                 ? null
-                : <img src={smartphone} style={{ width: '70%'}}/>
+                : <img src={signSmartphone} style={{ width: '80%'}}/>
             }
         </MediaQuery>     
         </ParallaxLayer>
 
 
         //Computadora
+        <ParallaxLayer
+          offset={1}
+          speed={1}
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', cursor:'pointer'}}
+          onClick={() => window.location.href='m.me/114241380306917'}>
+
+        <MediaQuery minDeviceWidth={1200}>
+            {/* You can also use a function (render prop) as a child */}
+            {(matches) =>
+              matches
+                ? null
+                : <img src={signDesktop} style={{ width: '70%'}}/>
+            }
+        </MediaQuery>     
+        </ParallaxLayer>
+
+        //Asesoramiento
         <ParallaxLayer
           offset={1.95}
           speed={1}
@@ -130,24 +150,7 @@ class App extends React.Component {
             {(matches) =>
               matches
                 ? null
-                : <img src={desktop} style={{ width: '70%'}}/>
-            }
-        </MediaQuery>     
-        </ParallaxLayer>
-
-        //Asesoramiento
-        <ParallaxLayer
-          offset={2.95}
-          speed={1}
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', cursor:'pointer'}}
-          onClick={() => window.location.href='m.me/114241380306917'}>
-
-        <MediaQuery minDeviceWidth={1200}>
-            {/* You can also use a function (render prop) as a child */}
-            {(matches) =>
-              matches
-                ? null
-                :  <img src={plan} style={{ width: '40%' }} />
+                :  <img src={signPlan} style={{ width: '70%' }} />
             }
         </MediaQuery>     
         </ParallaxLayer>
@@ -155,7 +158,7 @@ class App extends React.Component {
         //Cohete
         <ParallaxLayer
           offset={1}
-          speed={1.5}
+          speed={3}
           style={{ display: 'flex', alignItems: 'left', justifyContent: 'left' }}
           >
 
