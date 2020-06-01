@@ -8,6 +8,9 @@ import logoLooking from './assets/logo-looking.png'
 import cursor from './assets/cursor.svg'
 import BASH2 from './assets/bash2.svg'
 import ClientsMessenger from './assets/clients-main-messenger.svg'
+import desktop from './assets/desktop.svg'
+import smartphone from './assets/smartphone.svg'
+import plan from './assets/plan.svg'
 
 
 
@@ -31,11 +34,12 @@ class App extends React.Component {
 
     return (
       
-      <Parallax ref={ref => (this.parallax = ref)} pages={3} >
-        <ParallaxLayer offset={1} speed={1} style={{ backgroundColor: '#805E73' }} />
-        <ParallaxLayer offset={2} speed={1} style={{ backgroundColor: '#87BCDE' }}/>
+      <Parallax ref={ref => (this.parallax = ref)} pages={4} >
+        <ParallaxLayer offset={1} speed={1} factor={2} style={{ backgroundColor: '#805E73' }} />
+        <ParallaxLayer offset={2} speed={1} factor={2} style={{ backgroundColor: '#87BCDE' }}/>
+        <ParallaxLayer offset={3} speed={1} style={{ backgroundColor: '#87BCDE' }}/>
 
-        <ParallaxLayer offset={0} speed={0} factor={3} style={{ backgroundImage: url('stars', true), backgroundSize: 'cover' }} />
+        <ParallaxLayer offset={0} speed={0} factor={4} style={{ backgroundImage: url('stars', true), backgroundSize: 'cover' }} />
 
         <ParallaxLayer offset={1.3} speed={-0.3} style={{ pointerEvents: 'none' }}>
           <img src={url('satellite4')} style={{ width: '15%', marginLeft: '70%' }} />
@@ -71,32 +75,86 @@ class App extends React.Component {
           <img src={url('cloud')} style={{ display: 'block', width: '15%', marginLeft: '75%' }} />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={2.5} speed={-0.4} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
+
+        //Earth
+        <ParallaxLayer offset={3.5} speed={-0.4} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }}>
           <img src={url('earth')} style={{ width: '60%' }} />
         </ParallaxLayer>
 
         
-
+        //Logo
         <ParallaxLayer
           offset={0}
-          speed={0.1}
-          onClick={() => this.parallax.scrollTo(1)}
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src={logo} style={{ width: '70%' }}/>
+          speed={0.5}
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+          onClick={() => window.location.href='m.me/114241380306917'}>
+
+        <MediaQuery minDeviceWidth={1200}>
+            {/* You can also use a function (render prop) as a child */}
+            {(matches) =>
+              matches
+                ? <img src={logo} style={{ width: '70%' }}/>
+                : <img src={logoLooking} style={{ width: '70%' }}/>
+            }
+        </MediaQuery>     
+        </ParallaxLayer>
+      
+
+        //Smartphone
+        <ParallaxLayer
+          offset={0.95}
+          speed={1}
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', cursor:'pointer'}}
+          onClick={() => window.location.href='m.me/114241380306917'}>
+
+        <MediaQuery minDeviceWidth={1200}>
+            {/* You can also use a function (render prop) as a child */}
+            {(matches) =>
+              matches
+                ? null
+                : <img src={smartphone} style={{ width: '70%'}}/>
+            }
+        </MediaQuery>     
+        </ParallaxLayer>
+
+
+        //Computadora
+        <ParallaxLayer
+          offset={1.95}
+          speed={1}
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', cursor:'pointer'}}
+          onClick={() => window.location.href='m.me/114241380306917'}>
+
+        <MediaQuery minDeviceWidth={1200}>
+            {/* You can also use a function (render prop) as a child */}
+            {(matches) =>
+              matches
+                ? null
+                : <img src={desktop} style={{ width: '70%'}}/>
+            }
+        </MediaQuery>     
+        </ParallaxLayer>
+
+        //Asesoramiento
+        <ParallaxLayer
+          offset={2.95}
+          speed={1}
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', cursor:'pointer'}}
+          onClick={() => window.location.href='m.me/114241380306917'}>
+
+        <MediaQuery minDeviceWidth={1200}>
+            {/* You can also use a function (render prop) as a child */}
+            {(matches) =>
+              matches
+                ? null
+                :  <img src={plan} style={{ width: '40%' }} />
+            }
+        </MediaQuery>     
         </ParallaxLayer>
         
-
-
+        //Cohete
         <ParallaxLayer
           offset={1}
-          speed={0.1}
-          onClick={() => this.parallax.scrollTo(2)}
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src={BASH2} style={{ width: '40%' }} />
-        </ParallaxLayer>
-
-        <ParallaxLayer
-          offset={1.2}
           speed={1.5}
           style={{ display: 'flex', alignItems: 'left', justifyContent: 'left' }}
           >
@@ -110,9 +168,12 @@ class App extends React.Component {
             }
         </MediaQuery>     
         </ParallaxLayer>
-            
+        
+
+        //Contactanos
+
         <ParallaxLayer
-          offset={1.9}
+          offset={3}
           speed={-0}
           style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', cursor:'pointer'}}
           onClick={() => window.location.href='m.me/114241380306917'}>
@@ -121,28 +182,16 @@ class App extends React.Component {
             {/* You can also use a function (render prop) as a child */}
             {(matches) =>
               matches
-                ? <img src={ClientsMessenger} style={{ width: '40%', marginRight: '20%' }}/>
-                : <img src={ClientsMessenger} style={{ width: '80%', marginRight: '20%' }}/>
+                ? <img src={ClientsMessenger} />
+                : <img src={ClientsMessenger} />
             }
         </MediaQuery>     
         </ParallaxLayer>
 
+        
+        //Cursor    
         <ParallaxLayer
-          offset={2.2}
-          speed={0.9}
-          style={{ display: 'flex', alignItems: 'left', justifyContent: 'left' }}>
-        <MediaQuery minDeviceWidth={1200}>
-            {/* You can also use a function (render prop) as a child */}
-            {(matches) =>
-              matches
-                ? <img src={logoLooking} style={{ width: '20%', height: '60%', marginLeft: '70%' }}/>
-                : <img src={logoLooking} style={{ width: '40%', height: '80%', marginLeft: '70%'}}/>
-            }
-        </MediaQuery>    
-        </ParallaxLayer>
-
-        <ParallaxLayer
-          offset={2.2}
+          offset={3.2}
           speed={0.9}
           style={{ display: 'flex', alignItems: 'right', justifyContent: 'right' }}>
 
@@ -156,6 +205,7 @@ class App extends React.Component {
         </MediaQuery>     
         </ParallaxLayer>
 
+        /Messenger
         <ParallaxLayer
           offset={3}
           speed={-1}
